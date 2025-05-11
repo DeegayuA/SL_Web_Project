@@ -15,31 +15,31 @@ export const sriLankaMapPoints: MapPoint[] = [
   {
     id: 'colombo',
     name: 'Colombo',
-    svgCoords: { x: '18%', y: '68%' }, // Adjust these based on YOUR SVG
+    svgCoords: { x: '25%', y: '68%' }, // Adjust these based on YOUR SVG
     popupContentId: 'colombo_info',
   },
   {
     id: 'kandy',
     name: 'Kandy',
-    svgCoords: { x: '48%', y: '52%' }, // Adjust these based on YOUR SVG
+    svgCoords: { x: '48%', y: '56%' }, // Adjust these based on YOUR SVG
     popupContentId: 'kandy_info',
   },
   {
     id: 'galle',
     name: 'Galle',
-    svgCoords: { x: '28%', y: '88%' }, // Adjust these based on YOUR SVG
+    svgCoords: { x: '37%', y: '85%' }, // Adjust these based on YOUR SVG
     popupContentId: 'galle_info',
   },
   {
     id: 'sigiriya',
     name: 'Sigiriya',
-    svgCoords: { x: '50%', y: '38%' }, // Adjust these based on YOUR SVG
+    svgCoords: { x: '50%', y: '42%' }, // Adjust these based on YOUR SVG
     popupContentId: 'sigiriya_info',
   },
   {
     id: 'jaffna',
     name: 'Jaffna',
-    svgCoords: { x: '35%', y: '10%' }, // Adjust these based on YOUR SVG
+    svgCoords: { x: '35%', y: '13%' }, // Adjust these based on YOUR SVG
     popupContentId: 'jaffna_info',
   },
   {

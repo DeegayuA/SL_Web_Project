@@ -4,6 +4,7 @@ export interface PopupContent {
   description: string;
   images: { src: string; alt: string }[];
   attractions: string[];
+  themeColor?: string;
 }
 
 export const popupData: Record<string, PopupContent> = {
@@ -11,8 +12,10 @@ export const popupData: Record<string, PopupContent> = {
     areaName: 'Colombo',
     description: 'Sri Lanka\'s vibrant commercial capital, a bustling metropolis with a mix of modern life and colonial buildings.',
     images: [
-      { src: '/assets/images/colombo/colombo-cityscape.jpg', alt: 'Colombo Cityscape' },
-      { src: '/assets/images/colombo/galle-face.jpg', alt: 'Galle Face Green' }
+      // { src: '/assets/images/colombo/colombo-cityscape.jpg', alt: 'Colombo Cityscape' },
+      // { src: '/assets/images/colombo/galle-face.jpg', alt: 'Galle Face Green' },
+      { src: '/places/lotus-tower.jpg', alt: 'Lotus Tower' },
+      { src: '/places/galle-face.jpg', alt: 'Galle Face Green (Alternate)' }
     ],
     attractions: ['Galle Face Green', 'Gangaramaya Temple', 'Pettah Market', 'Colombo National Museum'],
   },
