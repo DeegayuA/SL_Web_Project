@@ -120,3 +120,51 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+/* Styles for custom Leaflet DivIcon markers */
+.leaflet-custom-div-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out; /* For hover effect on the whole div */
+}
+
+.leaflet-custom-div-icon svg {
+  /* SVG itself will transition fill and scale via its own classes/inline styles if needed */
+}
+
+.leaflet-custom-div-icon.active {
+  transform: scale(1.15); /* Make active marker slightly larger overall */
+  z-index: 1000 !important; /* Ensure active marker is on top */
+}
+
+.leaflet-custom-div-icon:hover {
+   transform: scale(1.1);
+}
+
+
+.marker-label-leaflet {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--map-marker-label-text, #374151); /* CSS variable for theming */
+  background-color: var(--map-marker-label-bg, rgba(255, 255, 255, 0.85)); /* CSS variable */
+  padding: 1px 4px;
+  border-radius: 3px;
+  margin-top: 2px; /* Space between icon and label */
+  white-space: nowrap;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+
+/* Dark theme overrides for labels (example) */
+.dark .marker-label-leaflet {
+  --map-marker-label-text: #E5E7EB;
+  --map-marker-label-bg: rgba(42, 50, 66, 0.85); /* Darker background */
+}
+
+/* Ensure Leaflet popups have high z-index */
+.leaflet-popup-pane {
+  z-index: 1001 !important; /* Higher than active marker */
+}

@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 // import { cn } from '@/lib/utils';
 import RootLayoutClient from './layout.client';
+// import { ThemeSwitcher } from '@/components/common/ThemeSwitcher';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -26,6 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      {/* <ThemeSwitcher/> */}
       <RootLayoutClient className={inter.className}>{children}</RootLayoutClient>
     </html>
   );

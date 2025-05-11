@@ -16,7 +16,7 @@ export function GlobeDemo() {
     // For example, if your next page is about Frankfurt, it might be "/frankfurt".
     // If "sri_lanka/page.tsx" implies navigating to "/sri_lanka",
     // then use router.push("/sri_lanka") which would reload the current page.
-    router.push("/sri_lanka");
+    router.push("/discover");
   };
 
   const colombo = { lat: 6.9271, lng: 79.8612 }; // Colombo, Sri Lanka
