@@ -61,16 +61,16 @@ export const sriLankaMapPoints: MapPoint[] = [
     popupContentId: 'Kalutara'
   },
   {
-    id: 'Bentota Beach',
+    id: 'Bentota_Beach',
     name: 'Sun Bath',
     svgCoords: { x: '55%', y: '65%' },
     popupContentId: 'Bentota Beach'
   },
   {
-    id: 'Hikkaduwa Beach',
+    id: 'Hikkaduwa_Beach',
     name: 'Surfing & Snorkelling',
     svgCoords: { x: '58%', y: '68%' },
-    popupContentId: 'Hikkaduwa Beach'
+    popupContentId: 'Hikkaduwa_Beach'
   },
   {
     id: 'Ambalangoda',
@@ -85,10 +85,10 @@ export const sriLankaMapPoints: MapPoint[] = [
     popupContentId: 'Galle'
   },
   {
-    id: 'Unawatuna Beach',
+    id: 'Unawatuna_Beach',
     name: 'Scuba Diving',
     svgCoords: { x: '65%', y: '80%' },
-    popupContentId: 'Unawatuna Beach'
+    popupContentId: 'Unawatuna_Beach'
   },
   {
     id: 'Mirissa',
@@ -175,10 +175,10 @@ export const sriLankaMapPoints: MapPoint[] = [
     popupContentId: 'Kandy'
   },
   {
-    id: 'Nuwara Eliya',
+    id: 'Nuwara_Eliya',
     name: 'Tea Factory',
     svgCoords: { x: '95%', y: '45%' },
-    popupContentId: 'Nuwara Eliya'
+    popupContentId: 'Nuwara_Eliya'
   },
   {
     id: 'Ella',
