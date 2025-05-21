@@ -11,7 +11,7 @@ import { sriLankaMapPoints } from '@/config/mapPoints.config';
 import { popupData } from '@/config/popupContent.config';
 import { cn } from '@/lib/utils';
 import { useThemeStore } from '@/store/theme.store';
-const slmap = '/sri-lanka2.svg';
+const slmap = '/sri-lanka3.png';
 
 // Option 1: Import SVG as a component (if you have SVGR configured with Next.js)
 // import SriLankaShape from '@/public/assets/svgs/sri-lanka-map.svg'; // Requires SVGR setup
