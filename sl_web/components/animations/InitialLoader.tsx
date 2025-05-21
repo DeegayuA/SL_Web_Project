@@ -58,7 +58,7 @@ const getTranslatedText = (sequence: TextSequence, langCode: ValidLanguageCode):
 
 export function InitialLoader({ onLoadingComplete }: { onLoadingComplete: () => void }) {
   const [isVisible, setIsVisible] = useState(true);
-  const [activeLanguage, setActiveLanguage] = useState<ValidLanguageCode>('de'); // Default to German
+  const [activeLanguage, setActiveLanguage] = useState<ValidLanguageCode>('en'); // Default to English
 
   // Effect to determine the active language from localStorage on mount
   useEffect(() => {
@@ -66,7 +66,6 @@ export function InitialLoader({ onLoadingComplete }: { onLoadingComplete: () => 
     if (storedLang && ['en', 'de', 'si'].includes(storedLang)) {
       setActiveLanguage(storedLang);
     }
-    // Otherwise, it defaults to 'de' as set in useState
   }, []); // Runs only once on mount
 
   useEffect(() => {
