@@ -2,33 +2,33 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import Image from 'next/image'; // Can be used if your SVG is simple and doesn't need inline styling/interaction
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 import { MapMarker } from './MapMarker';
-import { InfoPopup } from './InfoPopup';
+import { InfoPopup } from './InfoPopup'; // Your "wow" InfoPopup
 import { sriLankaMapPoints } from '@/config/mapPoints.config';
-import { popupData } from '@/config/popupContent.config';
+import { popupData, PopupContentEntry } from '@/config/popupContent.config'; // Ensure PopupContentEntry is imported if needed for type safety
 import { cn } from '@/lib/utils';
 import { useThemeStore } from '@/store/theme.store';
 const slmap = '/sri-lanka3.png';
 
-// Option 1: Import SVG as a component (if you have SVGR configured with Next.js)
-// import SriLankaShape from '@/public/assets/svgs/sri-lanka-map.svg'; // Requires SVGR setup
-
 export function SriLankaMap() {
     const [activePointId, setActivePointId] = useState<string | null>(null);
-    const [hoveredPointId, setHoveredPointId] = useState<string | null>(null); // For hover states on markers
+    const [hoveredPointId, setHoveredPointId] = useState<string | null>(null);
     const effectiveTheme = useThemeStore(state => state.getEffectiveTheme());
 
-    const selectedPopupContent = useMemo(() => {
+    const selectedPopupContent = useMemo((): PopupContentEntry | null => { // Explicitly type return
         if (!activePointId) return null;
         const activePoint = sriLankaMapPoints.find(p => p.id === activePointId);
-        return activePoint ? popupData[activePoint.popupContentId] : null;
+        // Ensure that popupData keys match popupContentId from mapPoints
+        return activePoint && popupData[activePoint.popupContentId]
+               ? popupData[activePoint.popupContentId]
+               : null;
     }, [activePointId]);
 
     const handleMarkerClick = (pointId: string) => {
-        setActivePointId(prevId => (prevId === pointId ? null : pointId)); // Toggle or set
+        setActivePointId(prevId => (prevId === pointId ? null : pointId));
     };
 
     const closePopup = () => {
@@ -43,61 +43,49 @@ export function SriLankaMap() {
             transition: {
                 duration: 0.5,
                 ease: 'easeOut',
-                when: "beforeChildren", // Animate container first
-                staggerChildren: 0.07, // Then stagger children (markers)
+                when: "beforeChildren",
+                staggerChildren: 0.07,
             },
         },
     };
 
     return (
-        <div className="relative w-full h-full flex items-center justify-center p-4 md:p-8">
-            {/* Main container for the map and markers */}
+        // This outer div should ideally be the one from DiscoverPage.tsx main map area,
+        // designed to give SriLankaMap ample space.
+        <div className="relative w-full h-full flex items-center justify-center">
             <motion.div
-                className="relative w-full max-w-xl md:max-w-2xl aspect-[700/1000]" // IMPORTANT: Adjust aspect ratio to match your SVG's natural proportions
-                // Example: If SVG viewBox="0 0 700 1000", aspect ratio is 700/1000
+                className="relative w-full max-w-xl md:max-w-2xl lg:max-w-3xl aspect-[700/1000]" // Adjust as needed
                 variants={mapContainerVariants}
                 initial="hidden"
                 animate="visible"
             >
-                {/* Option 2: Use an <img> tag for the SVG background */}
-                {/* This is simpler if your SVG doesn't need dynamic styling based on theme or interactivity of paths */}
                 <Image
-                    src={slmap} // Path to your SVG in the public folder
+                    src={slmap}
                     alt="Map of Sri Lanka"
-                    fill // Makes the image cover the parent div, respecting aspect ratio defined on parent
+                    fill
                     className={cn(
-                        "object-contain select-none drop-shadow-xl", // `object-contain` is usually best for maps
-                        // Apply theme-based filter if you want to subtly change SVG appearance (limited styling)
-                        effectiveTheme === 'dark' ? 'filter brightness-75 saturate-90' : 'filter brightness-100'
+                        "object-contain select-none drop-shadow-xl",
+                        effectiveTheme === 'dark' ? 'filter brightness-[0.8] saturate-90' : 'filter brightness-100' // Slightly enhanced dark mode filter
                     )}
-                    priority // Preload the map image
+                    priority
                 />
-
-
-
-                {/* Interactive Markers Overlay */}
-                {/* This div should exactly overlay the SVG content area */}
                 <div className="absolute inset-0 w-full h-full">
-                    {sriLankaMapPoints.map((point) => {
-                        const pointThemeColor = popupData[point.popupContentId]?.themeColor;
-                        return (
-                            <MapMarker
-                                key={point.id}
-                                point={point}
-                                onClick={() => handleMarkerClick(point.id)} // Your click handler
-                                isActive={activePointId === point.id}
-                                isHovered={hoveredPointId === point.id}
-                                onHoverStart={() => setHoveredPointId(point.id)}
-                                onHoverEnd={() => setHoveredPointId(null)}
-                                themeColor={pointThemeColor} // Pass the theme color
-                            />
-                        );
-                    })}
+                    {sriLankaMapPoints.map((point) => (
+                        <MapMarker
+                            key={point.id}
+                            point={point}
+                            onClick={() => handleMarkerClick(point.id)}
+                            isActive={activePointId === point.id}
+                            isHovered={hoveredPointId === point.id}
+                            onHoverStart={() => setHoveredPointId(point.id)}
+                            onHoverEnd={() => setHoveredPointId(null)}
+                        />
+                    ))}
                 </div>
             </motion.div>
 
             <InfoPopup
-                content={selectedPopupContent}
+                contentEntry={selectedPopupContent}
                 isOpen={!!activePointId && !!selectedPopupContent}
                 onClose={closePopup}
             />

@@ -5,7 +5,6 @@ import './globals.css';
 // import { cn } from '@/lib/utils';
 import RootLayoutClient from './layout.client';
 import { Navbar } from './Nav';
-import { ThemeProvider } from 'next-themes';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -28,17 +27,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-       <ThemeProvider
-          attribute="class"       // Apply theme by adding 'dark' class to <html>
-          defaultTheme="system"   // Default if no localStorage or system preference
-          // enableSystem            // Allow 'system' theme
-          storageKey="app-theme"  // THIS IS THE KEY CHANGE: Tell next-themes to use localStorage
-          disableTransitionOnChange // Optional: Prevent abrupt CSS transitions
-        >
-      <Navbar/>
-      <RootLayoutClient className={inter.className}>{children}</RootLayoutClient>
-        </ThemeProvider>
-
+      <RootLayoutClient className={inter.className}>
+        <Navbar />
+        {children}
+      </RootLayoutClient>
     </html>
   );
 }

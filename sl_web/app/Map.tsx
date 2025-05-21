@@ -138,7 +138,7 @@ export function GlobeDemo() {
     startLng: i % 2 === 0 ? weiden.lng : colombo.lng,
     endLat: i % 2 === 0 ? colombo.lat : weiden.lat,
     endLng: i % 2 === 0 ? colombo.lng : weiden.lng,
-    arcAlt: 0.5 + Math.random() * 0.4,
+    arcAlt: 0.2 + Math.random() * 0.3,
     color: arcColors[i % arcColors.length]
   })), [weiden, colombo, arcColors]);
 
@@ -177,7 +177,7 @@ export function GlobeDemo() {
         <AnimatedBackgroundBlobs />
       </div>
 
-      <div className="absolute inset-0 sm:-top-20 z-10 aspect-[1/1] lg:h-full lg:w-full sm:h-full sm:w-auto">
+      <div className="absolute inset-0 top-20 sm:-top-20 z-10 aspect-[1/1] lg:h-full lg:w-full sm:h-full sm:w-auto">
         <World key={renderKey} data={sampleArcs} globeConfig={globeConfig} />
       </div>
 

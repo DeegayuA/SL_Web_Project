@@ -45,7 +45,7 @@ export function ThemeSwitcher() {
   if (!mounted) {
     // Skeleton loader to prevent layout shift and match button size
     return (
-      <div className="p-2.5 rounded-full bg-slate-200 dark:bg-slate-700 shadow-sm animate-pulse w-[42px] h-[42px]" />
+      <div className="p-2.5 px-5 rounded-full bg-slate-200 dark:bg-slate-700 shadow-sm animate-pulse w-[42px] h-[42px]" />
     );
   }
 
